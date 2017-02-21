@@ -1,0 +1,321 @@
+    <!DOCTYPE html>
+    <!--
+    Copyright (c) 2012-2016 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+    KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+    -->
+    <html>
+
+    <head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
+   
+    <!-- Good default declaration:
+    * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+    * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+    * Disables use of eval() and inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+    * Enable inline JS: add 'unsafe-inline' to default-src
+    * Enable eval(): add 'unsafe-eval' to default-src
+    * Create your own at http://cspisawesome.com
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" />
+
+
+
+    <link rel="stylesheet" href="css/framework7.material.css">
+    <link rel="stylesheet" href="css/framework7.material.colors.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/font-awesome-animation.min.css">   
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+
+
+
+    <title>Hello World</title>
+    </head>
+
+    <body id='double-tap'>
+
+    <div class="statusbar-overlay"></div>
+    <div class="panel-overlay"></div>
+
+
+
+     <div class="panel panel-left panel-cover " style="background-color: #3A444E">
+         
+    
+  
+
+
+
+<div class="list-block theme-green">
+    <ul>
+         <a href="#" class="item-link">
+  <div class="item-content">
+    <div class="item-media"><img src='img/svg-icons/account_circle.svg'></div>
+    <div class="item-inner color-white">Profile</div>
+  </div>
+</a>
+ <a href="#" class="item-link" >
+  <div class="item-content">
+    <div class="item-media"><img src='img/svg-icons/list.svg' width='20px'></div>
+    <div class="item-inner color-white">Scores</div>
+  </div>
+</a>
+       <a href="#" class="item-link">
+  <div class="item-content">
+    <div class="item-media"><img src='img/svg-icons/people.svg'></div>
+    <div class="item-inner color-white">Leaderboard</div>
+  </div>
+</a>
+<a href="#" class="item-link" >
+  <div class="item-content">
+    <div class="item-media"><img src='img/svg-icons/school.svg'></div>
+    <div class="item-inner color-white">Challenges</div>
+  </div>
+</a>
+<a href="#" class="item-link" id="logout-button">
+  <div class="item-content">
+    <div class="item-media"><img src='img/svg-icons/exit.svg' width='20px'></div>
+    <div class="item-inner color-white">Logout</div>
+  </div>
+</a>
+
+    </ul>
+    
+</div>
+
+         
+    
+    </div>
+
+
+
+
+
+
+
+    <div class="views">
+    <div class="view view-main">
+
+    
+
+ 
+    <div class="pages navbar-fixed">
+        <div data-page="index" class="page">   
+
+        <div class="navbar " style='background-color:#3A444E;'>
+                    <div class="navbar-inner">
+                        <div class="left">
+                            <a href="#" data-panel="left" class="open-panel link"><img src='img/svg-icons/menu.svg'></a>
+                        </div>
+                        <div class="center"><span class="page-text">Quizz App</span></div>
+                        <div class="right">
+                            
+                        </div>
+                    </div>
+                </div>
+          
+            <div class="page-content ">
+                <div class="content-block">
+                    
+                  
+
+                  <h1 class="text-center">Quizz</h1>
+
+
+
+                      <img class='page-icon  faa-float animated ' src="img/svg/notes.svg" alt="" id=""> 
+
+                      <a href="#" id='tap' class=" button button-big button-fill button-raised button-color color-green" style="margin-top: 40%">Start</a>
+
+
+                        <p class="action-text hidden">Double tap to start the test</p>
+
+                               
+
+
+                </div>
+
+
+            
+            </div>
+
+
+
+            
+        </div>
+
+
+        <!-- preparing page -->
+         <div data-page="preparing" class="page cached">   
+
+        
+          
+            <div class="page-content ">
+                <div class="content-block ">
+                    
+                  
+                    
+
+
+                </div>
+
+
+            
+            </div>
+
+
+
+            
+        </div>
+
+        <!-- listening page -->
+         <div data-page="quiz" class="page cached">   
+
+        
+          
+            <div class="page-content ">
+                              
+                  <img class='page-icon  faa-float animated' src="img/svg/listening.svg" alt=""> <p class="action-text"> Listening Test</p>
+
+
+                   <div class="card">
+  <div class="card-header">Instructions</div>
+  <div class="card-content">
+    <div class="card-content-inner">Listen carefully and answer the questions that follow. You can listen to the audio file as many times as you want. When you are done, click continue to begin the test.    </div>
+  </div>
+  
+</div>
+<div class="content-block">
+
+  <p class="buttons-row">
+  <a href="#"><img src="img/svg-icons/play.svg" class="action-icon"></a>
+  <a href="#"><img src="img/svg-icons/pause.svg" class="action-icon"></a>
+  <a href="#"><img src="img/svg-icons/back.svg" class="action-icon"></a>
+</p>
+    <br>
+    <p class="buttons-row">
+  <a href="#" class="button button-big button-fill button-raised button-color color-green" id="play-audio-button">Play</a>
+  <a href="#" class="button button-big button-fill button-raised button-color color-green create-page" id="pause-audio-button">Continue</a>
+
+  
+</p>
+</div>
+
+
+                
+
+
+            
+            </div>
+
+
+
+            
+        </div>
+
+
+
+
+        <!-- reading page -->
+         <div data-page="reading" class="page cached">   
+
+        
+          
+            <div class="page-content ">
+                              
+                  <img class='page-icon  faa-float animated' src="img/svg/read.svg" alt=""> <p class="action-text"> Comprehension Test</p>
+
+
+                   <div class="card">
+  <div class="card-header">Instructions</div>
+  <div class="card-content">
+    <div class="card-content-inner">Read the passage carefully and answer the questions that follow.   </div>
+  </div>
+  
+</div>
+<div class="content-block">
+    
+    <p class="buttons-row">
+  
+  <a href="#" class="button button-big button-fill button-raised button-color color-green create-page" id="start-reading-button">Continue</a>
+
+  
+</p>
+</div>
+
+
+                
+
+
+            
+            </div>
+
+
+
+            
+        </div>
+        
+
+
+
+
+
+
+
+
+
+
+         
+
+
+
+    </div>
+    </div>
+    </div>
+
+
+
+
+
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/framework7.min.js"></script>
+    <script type="text/javascript" src="js/my-app.js"></script>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/appp.js"></script>
+    <script type="text/javascript" src="js/media.js"></script>
+     <script type="text/javascript" src="js/timer.min.js"></script>
+
+
+   
+    <script type="text/javascript">
+   
+
+        
+    </script>
+    </body>
+
+    </html>
